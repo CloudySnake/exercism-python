@@ -41,6 +41,11 @@ class HighScoresTest(unittest.TestCase):
         expected = [40]
         self.assertEqual(personal_top_three(scores), expected)
 
+    def test_run_multiple_queries(self):
+        scores = [10, 20, 30, 40, 50, 45]
+        self.assertEqual(latest(scores), 45)
+        self.assertEqual(personal_top_three(scores), [50, 45, 40])
+
 
 if __name__ == "__main__":
     unittest.main()
