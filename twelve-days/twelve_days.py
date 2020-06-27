@@ -1,3 +1,5 @@
+from typing import List
+
 VERSES = {
     12: ("twelve Drummers Drumming, ", "twelfth"),
     11: ("eleven Pipers Piping, ", "eleventh"),
@@ -10,23 +12,34 @@ VERSES = {
     4: ("four Calling Birds, ", "fourth"),
     3: ("three French Hens, ", "third"),
     2: ("two Turtle Doves, ", "second"),
-    1: ("and a Partridge in a Pear Tree.", "first"),
+    1: ("a Partridge in a Pear Tree.", "first"),
 }
 
 
-def build_verse(verse_num):
-    if verse_num == 1:
-        return "On the first day of Christmas my true love gave to me: " \
-               "a Partridge in a Pear Tree."
+# def build_verse(verse_num: int) -> str:
+#     if verse_num == 1:
+#         return "On the first day of Christmas my true love gave to me: " \
+#                f"a Partridge in a Pear Tree."
+#
+#     verse = f"On the {VERSES[verse_num][1]} day of Christmas my true love gave to me: "
+#
+#     days = [VERSES[num][0] for num in range(verse_num, 0, -1)]
+#     verse += "".join(days)
+#
+#     return verse
 
+def build_verse(verse_num: int) -> str:
     verse = f"On the {VERSES[verse_num][1]} day of Christmas my true love gave to me: "
 
     days = [VERSES[num][0] for num in range(verse_num, 0, -1)]
+
+    if verse_num != 1:
+        days[-1] = "and " + days[-1]
     verse += "".join(days)
 
     return verse
 
 
-def recite(start_verse, end_verse):
+def recite(start_verse: int, end_verse: int) -> List[str]:
     verses = [build_verse(verse_num) for verse_num in range(start_verse, end_verse + 1)]
     return verses
