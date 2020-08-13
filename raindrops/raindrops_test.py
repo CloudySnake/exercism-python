@@ -62,6 +62,9 @@ class RaindropsTest(unittest.TestCase):
     def test_the_sound_for_3125_is_plang_as_it_has_a_factor_5(self):
         self.assertEqual(convert(3125), "Plang")
 
+    def test_the_sound_for_6_is_plang_as_it_has_a_factor_3(self):
+        self.assertEqual(convert(6), "Pling")
+
 
 if __name__ == "__main__":
     unittest.main()
